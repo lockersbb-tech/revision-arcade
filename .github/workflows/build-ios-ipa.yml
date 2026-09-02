@@ -1,0 +1,61 @@
+name: Build unsigned iOS .ipa (for AltServer/Sideloadly sideload)
+
+# Manual trigger only — macOS runners consume CI minutes at 10x the normal
+# rate on GitHub's free tier, and this only needs to run when the ios-app
+# wrapper or the web content actually changes, not on every push.
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: ios-app
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        run: xcodegen generate
+
+      - name: Build unsigned .app (no code signing — AltServer/Sideloadly sign it later)
+        run: |
+          xcodebuild \
+            -project RevisionArcade.xcodeproj \
+            -scheme RevisionArcade \
+            -configuration Release \
+            -sdk iphoneos \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            build
+
+      - name: Package .app into unsigned .ipa
+        run: |
+          APP_PATH=$(find build/Build/Products/Release-iphoneos -maxdepth 1 -name "*.app" | head -n 1)
+          if [ -z "$APP_PATH" ]; then
+            echo "::error::No .app found under build/Build/Products/Release-iphoneos"
+            exit 1
+          fi
+          mkdir -p Payload
+          cp -r "$APP_PATH" Payload/
+          zip -r revision-arcade-unsigned.ipa Payload
+          mkdir -p ../ipa-output
+          mv revision-arcade-unsigned.ipa ../ipa-output/
+
+      - name: Verify the web app content is actually embedded in the .ipa
+        run: |
+          if ! unzip -l ../ipa-output/revision-arcade-unsigned.ipa | grep -q 'Payload/RevisionArcade.app/index.html'; then
+            echo "::error::index.html isn't embedded in Payload/RevisionArcade.app — the Resources copy-phase likely didn't run or the resource path in project.yml is wrong."
+            exit 1
+          fi
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: revision-arcade-unsigned-ipa
+          path: ipa-output/revision-arcade-unsigned.ipa
+          retention-days: 14
