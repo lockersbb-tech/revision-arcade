@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Study Arcade</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Study Arcade">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#14121F">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="manifest" href="manifest.json">
+<style>
+  html, body { margin:0; padding:0; background:#14121F; }
+</style>
+</head>
+<body>
+<style>
+  #arcade-root { font-family: 'Poppins', system-ui, sans-serif; background: #14121F; color: #F1EFE8; min-height: 100vh; padding: 20px 16px 40px; box-sizing: border-box; }
+  #arcade-root * { box-sizing: border-box; }
+  .ar-btn { border: none; cursor: pointer; font-family: inherit; }
+  .ar-fade { animation: arFade .25s ease; }
+  @keyframes arFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes arPop { 0% { transform: scale(1); } 40% { transform: scale(1.08); } 100% { transform: scale(1); } }
+  .ar-pop { animation: arPop .3s ease; }
+  #arcade-root ::selection { background: #FFB627; color: #14121F; }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+<div id="arcade-root">
+  <div id="ar-header" style="display:flex; align-items:center; justify-content:space-between; max-width:640px; margin:0 auto 20px;">
+    <div style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:20px; letter-spacing:.2px;">Study Arcade</div>
+    <div style="display:flex; gap:10px;">
+      <div id="ar-streak-chip" style="display:flex; align-items:center; gap:5px; background:#241F3B; border-radius:20px; padding:6px 12px; font-size:13px; font-weight:600;">
+        <span style="color:#FF7A59;">&#9679;</span><span id="ar-streak-num">0</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:5px; background:#241F3B; border-radius:20px; padding:6px 12px; font-size:13px; font-weight:600;">
+        <span style="color:#FFB627;">&#9670;</span><span id="ar-xp-num">0</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="ar-screen" style="max-width:640px; margin:0 auto;"></div>
+</div>
+
+<script>
+(function(){
+
+var SUBJECTS = [
+  { id:'maths', name:'Maths', sub:'Eduqas Higher', color:'#5B8DEF', dark:'#1B2A4A' },
+  { id:'englit', name:'English Lit', sub:'AQA', color:'#E85D75', dark:'#3A1F27' },
+  { id:'englang', name:'English Lang', sub:'AQA', color:'#F2994A', dark:'#3A2A18' },
+  { id:'science', name:'Combined Science', sub:'AQA Trilogy', color:'#34D399', dark:'#173327' },
+  { id:'music', name:'Music', sub:'WJEC', color:'#B983FF', dark:'#2A2140' },
+  { id:'french', name:'French', sub:'AQA', color:'#4FD1C5', dark:'#153534' },
+  { id:'geography', name:'Geography', sub:'AQA', color:'#F6C453', dark:'#3A331A' },
+  { id:'business', name:'Business', sub:'AQA', color:'#FF7A59', dark:'#3A2018' }
+];
+
+var BANK = {
+maths: [
+ {q:"What's 0.\u03071\u0307 (recurring) written as a fraction?", o:["1/9","1/10","1/11","1/99"], c:0},
+ {q:"Solve: x\u00b2 + 6x + 8 = 0", o:["x = -2 or -4","x = 2 or 4","x = -2 or 4","x = 6 or 8"], c:0},
+ {q:"What's the gradient of the line joining (1,2) and (3,8)?", o:["2","3","4","6"], c:1},
+ {q:"A price rises 20% then falls 20%. Compared to the original, the final price is:", o:["The same","Higher","Lower","Impossible to tell"], c:2},
+ {q:"What's the area of a circle with radius 5cm (to 1dp)?", o:["31.4cm\u00b2","78.5cm\u00b2","15.7cm\u00b2","62.8cm\u00b2"], c:1},
+ {q:"Which ratio law applies: y is inversely proportional to x?", o:["y = kx","y = k/x","y = x + k","y = kx\u00b2"], c:1},
+ {q:"sin(30\u00b0) equals:", o:["0.5","0.71","0.87","1"], c:0},
+ {q:"Two dice are rolled. P(both show 6) is:", o:["1/6","1/12","1/36","1/3"], c:2},
+ {q:"What's the median of: 3, 7, 4, 9, 2?", o:["3","4","7","5"], c:1},
+ {q:"Simplify: (x\u00b3)\u00b2", o:["x\u2075","x\u2076","x\u2079","2x\u00b3"], c:1},
+ {q:"What's the volume of a cylinder, radius 3cm, height 10cm (to nearest whole)?", o:["94cm\u00b3","283cm\u00b3","30cm\u00b3","188cm\u00b3"], c:1},
+ {q:"Which is NOT one of the six Eduqas Maths topic areas?", o:["Algebra","Probability","Mechanics","Statistics"], c:2},
+ {q:"Simplify √50", o:["5√2","2√5","10√5","25√2"], c:0},
+ {q:"Write 0.00034 in standard form", o:["3.4 × 10⁻⁴","3.4 × 10⁴","34 × 10⁻⁵","0.34 × 10⁻³"], c:0},
+ {q:"Solve simultaneously: x + y = 7, x − y = 3", o:["x = 5, y = 2","x = 2, y = 5","x = 4, y = 3","x = 3, y = 4"], c:0},
+ {q:"The angle in a semicircle (angle subtended by the diameter) is always:", o:["90°","180°","45°","60°"], c:0},
+ {q:"To find a missing side using two known sides and the angle between them in a non-right-angled triangle, use:", o:["The sine rule","The cosine rule","Pythagoras' theorem","SOHCAHTOA"], c:1},
+ {q:"Vector a = (3, 4). What's its magnitude |a|?", o:["5","7","12","25"], c:0},
+ {q:"The quadratic formula is:", o:["x = (−b ± √(b²−4ac)) / 2a","x = (−b ± √(b²+4ac)) / 2a","x = (b ± √(b²−4ac)) / 2a","x = (−b ± √(b²−4ac)) / a"], c:0},
+ {q:"x² + 8x + 3 written in completed-square form is:", o:["(x + 4)² − 13","(x + 4)² + 13","(x − 4)² − 13","(x + 8)² − 3"], c:0},
+ {q:"Events A and B are independent. P(A) = 0.3, P(B) = 0.5. What's P(A and B)?", o:["0.15","0.8","0.2","0.6"], c:0},
+ {q:"A length is given as 12cm to the nearest cm. What's the upper bound?", o:["12.5cm","12.4cm","11.5cm","13cm"], c:0}
+],
+englit: [
+ {q:"What is Macbeth's fatal flaw?", o:["Cowardice","Ambition","Greed for money","Jealousy"], c:1},
+ {q:"Who says 'unsex me here' in Macbeth?", o:["Macbeth","Banquo","Lady Macbeth","The witches"], c:2},
+ {q:"What does the Ghost of Christmas Present expose under his robe?", o:["Ignorance and Want","Marley's chains","A pocket watch","Scrooge's ledger"], c:0},
+ {q:"In An Inspector Calls, who does the Inspector represent thematically?", o:["The police force","Social responsibility","Capitalism","Youth rebellion"], c:1},
+ {q:"Which two Birlings show genuine remorse by the play's end?", o:["Mr and Mrs Birling","Sheila and Eric","Gerald and Sheila","Eric and Mr Birling"], c:1},
+ {q:"'Ozymandias' is most centrally about:", o:["Romantic love","The power of nature and time over human power","War heroism","Family conflict"], c:1},
+ {q:"When tackling unseen poetry, what should you do first?", o:["Write the essay plan","Read it twice, annotating on the second read","Memorise it","Skip to the last stanza"], c:1},
+ {q:"What technique should always accompany a quotation in analysis?", o:["A summary of the plot","An explanation of its effect on the reader","A dictionary definition","A comparison to a film"], c:1},
+ {q:"What year is An Inspector Calls set, and when was it written?", o:["Set 1912, written 1945","Set 1945, written 1912","Set 1900, written 1950","Set 1912, written 1912"], c:0},
+ {q:"What social class critique does Dickens make through Scrooge?", o:["Praise of hard work","Indifference to poverty under Victorian capitalism","Support for the monarchy","Criticism of religion"], c:1},
+ {q:"What does Lady Macbeth mean by 'screw your courage to the sticking place'?", o:["Tighten a bolt","Steel yourself to commit fully to the plan","Prepare the weapons","Pray for courage"], c:1},
+ {q:"Following Aristotle's model, Macbeth is best classified as a:", o:["Comedy","Tragedy","Farce","History play only"], c:1},
+ {q:"Mr Birling's confident claim that the Titanic is 'unsinkable' works as dramatic irony because it:", o:["Proves he's always right","Undermines his credibility, since the audience knows he's wrong","Shows the play is set in the future","Has nothing to do with his character"], c:1},
+ {q:"Priestley wrote An Inspector Calls chiefly as a warning about:", o:["The dangers of capitalism and a lack of social responsibility","The dangers of socialism","The dangers of marriage","The dangers of travel"], c:0},
+ {q:"How many staves (chapters) does A Christmas Carol have?", o:["3","4","5","6"], c:2},
+ {q:"Scrooge's change across the novella is best described as a:", o:["Redemption arc","Tragic downfall","Flashback with no real change","Circular narrative"], c:0},
+ {q:"In Wilfred Owen's 'Exposure', the soldiers' real enemy is presented as:", o:["The opposing army","The weather and nature","Their commanding officers","Boredom"], c:1},
+ {q:"Ted Hughes' 'Bayonet Charge' focuses on:", o:["A soldier's disorientated experience in the heat of battle","A general's strategy meeting","A peaceful countryside walk","A soldier returning home"], c:0},
+ {q:"Carol Ann Duffy's 'War Photographer' centres on a contrast between:", o:["Two rival photographers","The chaos of war zones and the safety/indifference of England","Past and future technology","Two different wars"], c:1},
+ {q:"AO3 in GCSE English Literature assesses:", o:["Spelling and punctuation","Context — the relationship between texts and when/why they were written","Comparing two poems","Vocabulary range only"], c:1}
+],
+englang: [
+ {q:"Paper 1 of AQA English Language focuses on:", o:["Non-fiction viewpoints","Fiction reading and creative writing","Poetry analysis","Spoken language"], c:1},
+ {q:"Paper 2 focuses on:", o:["Creative writing only","Two non-fiction extracts and a transactional writing task", "A single novel", "Drama analysis"], c:1},
+ {q:"What must a strong Question 2 (language) answer always do?", o:["List techniques with no examples","Quote and explain the effect on the reader","Just describe the plot","Compare two texts"], c:1},
+ {q:"What's a strong way to open a creative writing piece?", o:["Generic scene-setting", "A striking hook establishing tone or voice immediately", "A list of characters", "A dictionary definition"], c:1},
+ {q:"Which is a structural feature you could analyse in Question 3?", o:["Font size","Shifts in time, focus or perspective","Page numbers","Punctuation only"], c:1},
+ {q:"In a transactional writing task, tone should be:", o:["Always formal regardless of audience","Matched to the purpose and audience specified","Always informal","Irrelevant"], c:1},
+ {q:"What's a 'narrative camera' technique?", o:["Literally filming the story","Zooming in/out on detail like a camera lens", "Using photographs in text", "A flashback only"], c:1},
+ {q:"Which Assessment Objective (AO) asks you to evaluate a text critically, using evidence?", o:["AO1","AO2","AO3","AO4"], c:3},
+ {q:"In Paper 1 Question 5 (creative writing), which skill is most heavily rewarded?", o:["Perfect spelling only","Imaginative description/narrative crafted with a range of techniques","Writing the longest possible answer","Copying the source text's style word for word"], c:1},
+ {q:"A rhetorical question in a persuasive text is used to:", o:["Ask for information the writer doesn't know","Engage the reader and imply an obvious answer","Confuse the reader","Change the subject"], c:1},
+ {q:"What is asyndetic listing?", o:["A list joined with 'and'/'or' throughout","A list using commas with no conjunctions, for pace or emphasis","A list of exactly three items","A list with only two items"], c:1},
+ {q:"In spoken language study, 'prosodic features' refers to:", o:["Word choice only","Stress, intonation, pitch and rhythm in speech","Grammar rules","Written punctuation"], c:1},
+ {q:"For Paper 2 Question 4 (comparison), what must you compare?", o:["Only the writers' word counts","The writers' different perspectives/attitudes and how they're conveyed","Which text is longer","The publication dates only"], c:1},
+ {q:"A semantic field is:", o:["A group of words all linked to the same topic or idea","A single powerful adjective","A type of sentence structure","A grammatical error"], c:0},
+ {q:"Which of these is a simple sentence?", o:["The dog barked.","The dog barked, and the cat ran.","Although it rained, the dog barked.","The dog, which was hungry, barked."], c:0},
+ {q:"A short, blunt sentence placed right after a long, flowing one often creates:", o:["A softer tone","Impact or emphasis through contrast","No noticeable effect","An even slower pace"], c:1},
+ {q:"Non-fiction writing that argues one side of an issue is called:", o:["Descriptive writing","Argumentative/persuasive writing","Narrative writing","Instructional writing"], c:1}
+],
+science: [
+ {q:"What's the equation for aerobic respiration?", o:["Glucose + oxygen \u2192 CO\u2082 + water","Glucose \u2192 CO\u2082 + ethanol","Water + CO\u2082 \u2192 glucose + oxygen","Oxygen + nitrogen \u2192 ammonia"], c:0},
+ {q:"Mitosis produces:", o:["Four genetically different gametes","Two genetically identical cells","One giant cell","Random genetic mixing"], c:1},
+ {q:"How do vaccines create immunity?", o:["By killing all bacteria","By introducing an inactive pathogen so the body makes antibodies/memory cells","By boosting red blood cells","By raising body temperature"], c:1},
+ {q:"What's the charge of a neutron?", o:["+1","-1","0","+2"], c:2},
+ {q:"Ionic bonding involves:", o:["Sharing electrons between non-metals","Transferring electrons between a metal and non-metal","Only protons moving","No electron involvement"], c:1},
+ {q:"Which factor does NOT increase reaction rate?", o:["Higher temperature","Larger surface area","Lower concentration","Adding a catalyst"], c:2},
+ {q:"Newton's Second Law is:", o:["F = ma","E = mc\u00b2","V = IR","P = mv"], c:0},
+ {q:"In a series circuit, current is:", o:["Different in each component","The same throughout","Zero","Only at the battery"], c:1},
+ {q:"Alpha decay causes the mass number to:", o:["Increase by 4","Decrease by 4","Stay the same","Decrease by 2"], c:1},
+ {q:"Homeostasis refers to:", o:["Cell division","Regulating internal conditions to stay stable","Producing energy","Genetic inheritance"], c:1},
+ {q:"Which subatomic particle orbits the nucleus?", o:["Proton","Neutron","Electron","Quark"], c:2},
+ {q:"Combined Science Trilogy has how many exam papers in total?", o:["3","4","6","8"], c:2},
+ {q:"The word equation for photosynthesis is:", o:["Carbon dioxide + water → glucose + oxygen","Glucose + oxygen → carbon dioxide + water","Water → hydrogen + oxygen","Glucose → carbon dioxide + ethanol"], c:0},
+ {q:"Osmosis is the movement of:", o:["Solute particles from high to low concentration","Water molecules from high to low water potential across a partially permeable membrane","Gases only","Enzymes across membranes"], c:1},
+ {q:"Enzymes are best described as:", o:["Biological catalysts that speed up reactions without being used up","Hormones only","Waste products of respiration","Structural proteins only"], c:0},
+ {q:"Natural selection requires:", o:["Variation, competition, and survival/reproduction of the best-adapted","Only mutation","Only environmental change","Identical offspring every generation"], c:0},
+ {q:"During electrolysis of molten lead bromide, lead forms at the:", o:["Anode (positive electrode)","Cathode (negative electrode)","Both electrodes equally","Neither electrode"], c:1},
+ {q:"On a graph of volume of gas vs time for a reaction, a steeper initial gradient means:", o:["A slower reaction","A faster reaction","No reaction occurring","The reaction has finished"], c:1},
+ {q:"Going down Group 1 (alkali metals), reactivity:", o:["Decreases","Increases","Stays the same","Becomes zero"], c:1},
+ {q:"Frequency is measured in:", o:["Metres","Seconds","Hertz","Newtons"], c:2},
+ {q:"A way to increase the strength of an electromagnet is to:", o:["Decrease the current","Add more coils of wire and increase the current","Remove the iron core","Use a shorter wire"], c:1},
+ {q:"Half-life is the time taken for:", o:["All radioactive atoms in a sample to decay","Half of the radioactive nuclei in a sample to decay","The activity to double","Radiation to stop completely"], c:1},
+ {q:"In a food chain, energy is lost between trophic levels mainly through:", o:["Respiration, movement and heat loss","Photosynthesis","Digestion only","It isn't lost — it's fully transferred"], c:0}
+],
+music: [
+ {q:"What is ternary form?", o:["A–B–A structure","A single continuous section","A–B–C–D structure","Random order"], c:0},
+ {q:"Rondo form alternates a main theme with:", o:["Silence","Contrasting episodes","Only percussion","Nothing, it repeats exactly"], c:1},
+ {q:"What does 'timbre' mean?", o:["The speed of the music","The tone quality/colour of a sound","The key signature","The time signature"], c:1},
+ {q:"A leitmotif is:", o:["A film credit song","A recurring theme linked to a character or idea","A type of chord","A rhythm pattern only"], c:1},
+ {q:"Diegetic music in film is music that:", o:["Only the audience hears","Exists within the story world and characters can hear it","Is always orchestral","Never has lyrics"], c:1},
+ {q:"A typical pop song structure is:", o:["Verse-Chorus-Verse-Chorus-Bridge-Chorus","Only one long verse","Chorus only, repeated","Random order every time"], c:0},
+ {q:"Syncopation creates:", o:["A predictable steady beat","Emphasis on off-beats for rhythmic drive","Silence","A key change"], c:1},
+ {q:"WJEC GCSE Music has how many Areas of Study?", o:["Two","Three","Four","Six"], c:2},
+ {q:"Homophonic texture means:", o:["A single unaccompanied line","Melody plus accompaniment","Multiple independent melodic lines","No melody at all"], c:1},
+ {q:"A perfect cadence (V–I) creates a feeling of:", o:["Resolution and finality","Unresolved tension","Sudden silence","A key change only"], c:0},
+ {q:"An imperfect cadence ends on:", o:["The tonic (I)","The dominant (V)","The subdominant (IV) only","A rest"], c:1},
+ {q:"Staccato notes are played:", o:["Smoothly connected","Short and detached","Very loudly only","Out of tune"], c:1},
+ {q:"A crescendo instructs the performer to:", o:["Get gradually quieter","Get gradually louder","Slow down","Speed up"], c:1},
+ {q:"Which WJEC Area of Study covers film music?", o:["Area of Study 1","Area of Study 2","Area of Study 3","Area of Study 4"], c:2},
+ {q:"Polyphonic texture means:", o:["A single melodic line","Two or more independent melodic lines played together","Melody with block chords only","Silence between phrases"], c:1},
+ {q:"In music technology, 'reverb' is used to:", o:["Remove all background noise","Simulate a sense of space or echo in a room","Increase the tempo","Change the key"], c:1}
+],
+french: [
+ {q:"'Pendant mon temps libre, j'aime...' means:", o:["I used to like","In my free time, I like to...","I will like","I don't like"], c:1},
+ {q:"Which tense is used for 'j'ai visit\u00e9'?", o:["Present","Perfect (pass\u00e9 compos\u00e9)","Future","Imperfect"], c:1},
+ {q:"'Je vais travailler comme...' expresses:", o:["A past job","A near-future career plan","A regret","A question"], c:1},
+ {q:"AQA French has how many themes covering all four papers?", o:["Two","Three","Four","Five"], c:1},
+ {q:"Best technique for the Listening paper is to:", o:["Ignore the questions until the recording ends","Read questions first and listen for key words/synonyms","Translate word for word only","Guess without listening"], c:1},
+ {q:"What should a strong Writing answer include?", o:["Only the present tense","Tense variety plus justified opinions","No opinions at all","Random vocabulary"], c:1},
+ {q:"'Mon fr\u00e8re est sympa' uses which possessive adjective structure?", o:["mon/ma/mes + noun + adjective","Verb first, then noun","No possessive needed","Adjective before noun always"], c:0},
+ {q:"'Je voudrais' is used to say:", o:["I want (demanding)","I would like (polite)","I wanted (in the past)","I will want (in the future)"], c:1},
+ {q:"The negation 'ne...pas' surrounds:", o:["The subject","The verb","The adjective only","The whole sentence, including punctuation"], c:1},
+ {q:"The comparative 'plus...que' means:", o:["Less...than","More...than","As...as","The most"], c:1},
+ {q:"'Si j'avais de l'argent, je voyagerais' uses which structure?", o:["Present tense only","A conditional sentence (imperfect + conditional)","Future simple","Past tense only"], c:1},
+ {q:"Which is a correct opinion phrase in French?", o:["\u00c0 mon avis...","Au contraire de moi...","Je pense que non oui...","Le weekend prochain..."], c:0},
+ {q:"In the Reading paper, cognates are:", o:["Words that look/sound similar in French and English and share a meaning","False friends only","Grammar rules","Verb conjugations"], c:0},
+ {q:"'Depuis' + a present tense verb is used to express:", o:["An action that finished in the past","An action that started in the past and is still continuing","A future plan","A hypothetical situation"], c:1}
+],
+geography: [
+ {q:"Why were Haiti's 2010 earthquake effects worse than Chile's despite similar magnitude?", o:["Haiti is wealthier","Haiti is a poorer LIC with weaker building codes and preparedness","Chile had no earthquake","Haiti's quake was bigger"], c:1},
+ {q:"What are the '3 Ps' for reducing tropical storm risk?", o:["Prediction, Planning, Protection","Power, Position, Prevention","Plan, Pause, Protect","Predict, Prepare, Panic"], c:0},
+ {q:"What caused the Somerset Levels floods of 2014?", o:["A heatwave","Record rainfall combined with rivers that hadn't been dredged","An earthquake","Coastal erosion"], c:1},
+ {q:"How was Durdle Door formed?", o:["Volcanic activity","Differential erosion of alternating hard and soft rock","Glacial deposition","Human construction"], c:1},
+ {q:"The Western Desert case study (desertification, oil, tourism) covers which country?", o:["Egypt","India","USA","Australia"], c:0},
+ {q:"What is the Great Green Wall aiming to combat?", o:["Flooding","Desertification in the Sahel","Coastal erosion","Urban sprawl"], c:1},
+ {q:"Name a major cause of Amazon deforestation.", o:["Volcanic eruptions","Commercial farming and cattle ranching","Glacial melt","Coral bleaching"], c:1},
+ {q:"What is Rio de Janeiro's Favela Bairro Project designed to do?", o:["Demolish all favelas","Upgrade infrastructure within existing favelas","Build a new city","Ban migration"], c:1},
+ {q:"What triggered the regeneration of Stratford, London?", o:["A flood","Hosting the 2012 Olympics","A new airport","A royal visit"], c:1},
+ {q:"What's the difference between primary and secondary fieldwork data?", o:["Primary is collected first-hand; secondary comes from existing sources","They're the same thing","Secondary is always more accurate","Primary is only numerical"], c:0},
+ {q:"Which type of plate boundary causes the most violent volcanic eruptions?", o:["Constructive (divergent)","Destructive (convergent, e.g. subduction)","Conservative (transform)","There's no difference between them"], c:1},
+ {q:"The Holderness coast is a UK case study of:", o:["Rapid coastal erosion and management strategies","A stable coastline with no erosion","A hot desert","A tropical rainforest"], c:0},
+ {q:"Groynes are a coastal management strategy that work by:", o:["Absorbing wave energy directly","Trapping sediment moved by longshore drift to build up the beach","Releasing sand offshore","Blocking rivers"], c:1},
+ {q:"In the Demographic Transition Model, the stage with a high birth rate and rapidly falling death rate is:", o:["Stage 1","Stage 2","Stage 4","Stage 5"], c:1},
+ {q:"A push factor for migration is:", o:["Better job opportunities at the destination","Conflict, poverty or lack of opportunity at the origin","A nicer climate at the destination","Family already living at the destination"], c:1},
+ {q:"Renewable energy is best described as:", o:["A source that will run out","A source that's naturally replenished and won't run out","Only solar power","Always more expensive than fossil fuels"], c:1},
+ {q:"Counter-urbanisation refers to people moving from:", o:["Rural areas into cities","Cities into rural/suburban areas","One city to another","One country to another only"], c:1}
+],
+business: [
+ {q:"A sole trader has:", o:["Limited liability and multiple owners","One owner and unlimited liability","No owner","Only online sales"], c:1},
+ {q:"Rising interest rates typically:", o:["Encourage more borrowing","Discourage investment and reduce consumer spending","Have no effect on business","Only affect government"], c:1},
+ {q:"Batch production means:", o:["One-off bespoke items only","Groups of identical items made together","Continuous non-stop production","No production planning"], c:1},
+ {q:"Internal recruitment means:", o:["Hiring from outside the business","Filling a role from within the existing workforce","Using an agency only","Never advertising a role"], c:1},
+ {q:"The 4 Ps of the marketing mix are:", o:["Product, Price, Place, Promotion","People, Plan, Profit, Position","Product, Profit, Plan, Place","Price, Product, People, Promotion"], c:0},
+ {q:"Profit is calculated as:", o:["Revenue + Costs","Revenue minus Total Costs","Costs minus Revenue","Revenue divided by Costs"], c:1},
+ {q:"The break-even point is where:", o:["Profit is maximised","Total revenue equals total costs","Costs are zero","Revenue is zero"], c:1},
+ {q:"Which is a source of business finance?", o:["Retained profit","Customer complaints","Market research","Staff turnover"], c:0},
+ {q:"Cash flow is:", o:["The same as profit","The movement of money in and out of a business","Only money going out","Only money coming in"], c:1},
+ {q:"A stakeholder is:", o:["Only the owner of a business","Anyone with an interest in or affected by the business's activities","Only shareholders","Only customers"], c:1},
+ {q:"A Public Limited Company (PLC) can:", o:["Never sell shares","Sell shares to the public on the stock exchange","Only have one owner","Not exist legally"], c:1},
+ {q:"Maslow's Hierarchy of Needs is used in business to explain:", o:["Pricing strategy","Employee motivation","Production methods","Market segmentation"], c:1},
+ {q:"Quality assurance differs from quality control because it:", o:["Only checks the finished product","Builds quality checks into every stage of production, not just the end","Is exactly the same thing","Ignores customer standards"], c:1},
+ {q:"Globalisation, for a business, means:", o:["Only trading locally","Operating and trading across international markets","Avoiding all foreign competition","Reducing to one single market"], c:1},
+ {q:"E-commerce has changed business mainly by:", o:["Making all physical shops close immediately","Enabling businesses to sell directly to customers online, often at lower cost","Banning international trade","Removing the need for marketing"], c:1},
+ {q:"A business's most suitable location depends on factors including:", o:["Just the owner's home address","Proximity to market, labour and materials, and cost of the site","Only the weather","Random chance"], c:1},
+ {q:"Unlimited liability means:", o:["The owner's personal assets are protected","The owner is personally responsible for all business debts","The business can never make a loss","Liability is shared equally with the bank"], c:1}
+]
+};
+
+var storageOK = true;
+var state = { xp:0, streak:0, lastActive:null, progress:{} };
+
+function initProgress(){
+  SUBJECTS.forEach(function(s){
+    if(!state.progress[s.id]) state.progress[s.id] = { xp:0, best:0, attempts:0 };
+  });
+}
+
+function todayStr(){ return new Date().toISOString().slice(0,10); }
+
+function loadState(cb){
+  try {
+    var raw = localStorage.getItem('arcade-state');
+    if(raw){
+      var parsed = JSON.parse(raw);
+      state = Object.assign(state, parsed);
+    }
+  } catch(e){ storageOK = false; }
+  initProgress();
+  checkStreak();
+  cb();
+}
+
+function saveState(){
+  if(!storageOK) return;
+  try { localStorage.setItem('arcade-state', JSON.stringify(state)); }
+  catch(e){ storageOK = false; }
+}
+
+function checkStreak(){
+  var today = todayStr();
+  if(state.lastActive === today) return;
+  if(state.lastActive){
+    var last = new Date(state.lastActive);
+    var now = new Date(today);
+    var diffDays = Math.round((now - last) / 86400000);
+    if(diffDays > 1) state.streak = 0;
+  }
+}
+
+function markActiveToday(){
+  var today = todayStr();
+  if(state.lastActive !== today){
+    var wasYesterday = false;
+    if(state.lastActive){
+      var last = new Date(state.lastActive);
+      var now = new Date(today);
+      wasYesterday = Math.round((now - last) / 86400000) === 1;
+    }
+    state.streak = state.lastActive ? (wasYesterday ? state.streak + 1 : 1) : 1;
+    state.lastActive = today;
+  }
+}
+
+function updateHeader(){
+  document.getElementById('ar-streak-num').textContent = state.streak;
+  document.getElementById('ar-xp-num').textContent = state.xp;
+}
+
+function shuffle(arr){
+  var a = arr.slice();
+  for(var i=a.length-1;i>0;i--){
+    var j = Math.floor(Math.random()*(i+1));
+    var t=a[i]; a[i]=a[j]; a[j]=t;
+  }
+  return a;
+}
+
+function levelFor(xp){
+  return Math.floor(xp / 50) + 1;
+}
+
+function renderHome(){
+  var el = document.getElementById('ar-screen');
+  var html = '<div class="ar-fade">';
+  html += '<div style="font-family:\'Fredoka\',sans-serif; font-size:15px; color:#B8B4CC; margin-bottom:14px;">Pick a subject to start a 10-question run</div>';
+  html += '<div style="display:grid; grid-template-columns:repeat(2,1fr); gap:12px;">';
+  SUBJECTS.forEach(function(s){
+    var p = state.progress[s.id];
+    var lvl = levelFor(p.xp);
+    var pct = Math.min(100, Math.round(((p.xp % 50) / 50) * 100));
+    html += '<button class="ar-btn" data-subj="'+s.id+'" style="text-align:left; background:'+s.dark+'; border:1px solid '+s.color+'44; border-radius:16px; padding:14px; color:#F1EFE8;">';
+    html += '<div style="font-weight:600; font-size:14px; font-family:\'Fredoka\',sans-serif; color:'+s.color+';">'+s.name+'</div>';
+    html += '<div style="font-size:11px; color:#9C97B4; margin:2px 0 10px;">'+s.sub+'</div>';
+    html += '<div style="font-size:11px; color:#B8B4CC; margin-bottom:4px;">Level '+lvl+'</div>';
+    html += '<div style="height:6px; background:#00000033; border-radius:4px; overflow:hidden;"><div style="height:100%; width:'+pct+'%; background:'+s.color+';"></div></div>';
+    html += '</button>';
+  });
+  html += '</div></div>';
+  el.innerHTML = html;
+  Array.prototype.forEach.call(el.querySelectorAll('[data-subj]'), function(btn){
+    btn.addEventListener('click', function(){ startSession(btn.getAttribute('data-subj')); });
+  });
+}
+
+var session = null;
+
+function startSession(subjId){
+  var subj = SUBJECTS.filter(function(s){ return s.id === subjId; })[0];
+  var pool = shuffle(BANK[subjId] || []);
+  var qs = pool.slice(0, Math.min(10, pool.length));
+  session = { subj:subj, questions:qs, idx:0, correct:0, locked:false };
+  renderQuestion();
+}
+
+function renderQuestion(){
+  var el = document.getElementById('ar-screen');
+  var s = session;
+  if(s.idx >= s.questions.length){ renderSummary(); return; }
+  var q = s.questions[s.idx];
+  var subj = s.subj;
+  var html = '<div class="ar-fade">';
+  html += '<div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px;">';
+  html += '<button class="ar-btn" id="ar-exit" style="background:none; color:#9C97B4; font-size:13px; padding:4px 0;">&larr; Exit</button>';
+  html += '<div style="font-size:12px; color:#9C97B4;">Question '+(s.idx+1)+' of '+s.questions.length+'</div>';
+  html += '</div>';
+  html += '<div style="display:flex; gap:4px; margin-bottom:20px;">';
+  s.questions.forEach(function(_,i){
+    var col = i < s.idx ? subj.color : (i === s.idx ? '#FFFFFF33' : '#241F3B');
+    html += '<div style="flex:1; height:5px; border-radius:3px; background:'+col+';"></div>';
+  });
+  html += '</div>';
+  html += '<div style="background:'+subj.dark+'; border-radius:18px; padding:20px; margin-bottom:16px;">';
+  html += '<div style="font-size:11px; color:'+subj.color+'; font-weight:600; margin-bottom:8px;">'+subj.name+'</div>';
+  html += '<div style="font-size:17px; font-family:\'Fredoka\',sans-serif; font-weight:500; line-height:1.4;">'+q.q+'</div>';
+  html += '</div>';
+  html += '<div id="ar-options" style="display:flex; flex-direction:column; gap:10px;">';
+  q.o.forEach(function(opt, i){
+    html += '<button class="ar-btn ar-opt" data-i="'+i+'" style="text-align:left; background:#1F1B33; border:1.5px solid #2E2A45; border-radius:12px; padding:14px 16px; color:#F1EFE8; font-size:14px;">'+opt+'</button>';
+  });
+  html += '</div>';
+  html += '<div id="ar-feedback" style="margin-top:14px; font-size:13px; min-height:18px;"></div>';
+  html += '</div>';
+  el.innerHTML = html;
+  document.getElementById('ar-exit').addEventListener('click', function(){ session=null; renderHome(); });
+  Array.prototype.forEach.call(el.querySelectorAll('.ar-opt'), function(btn){
+    btn.addEventListener('click', function(){ selectAnswer(parseInt(btn.getAttribute('data-i'),10)); });
+  });
+}
+
+function selectAnswer(i){
+  var s = session;
+  if(s.locked) return;
+  s.locked = true;
+  var q = s.questions[s.idx];
+  var buttons = document.querySelectorAll('.ar-opt');
+  var correct = i === q.c;
+  if(correct) s.correct++;
+  Array.prototype.forEach.call(buttons, function(btn, idx){
+    btn.style.pointerEvents = 'none';
+    if(idx === q.c){
+      btn.style.background = '#1D4A2F';
+      btn.style.borderColor = '#34D399';
+    } else if(idx === i && !correct){
+      btn.style.background = '#4A1B1B';
+      btn.style.borderColor = '#E85D75';
+      btn.classList.add('ar-pop');
+    }
+  });
+  var fb = document.getElementById('ar-feedback');
+  fb.style.color = correct ? '#34D399' : '#F5A3A3';
+  fb.textContent = correct ? 'Correct — nice one.' : 'Not quite. The right answer is highlighted.';
+  if(correct){
+    state.xp += 10;
+    state.progress[s.subj.id].xp += 10;
+    updateHeader();
+    saveState();
+  }
+  setTimeout(function(){
+    s.idx++;
+    renderQuestion();
+  }, 1100);
+}
+
+function renderSummary(){
+  var s = session;
+  var subj = s.subj;
+  var p = state.progress[subj.id];
+  p.attempts++;
+  if(s.correct > p.best) p.best = s.correct;
+  markActiveToday();
+  saveState();
+  updateHeader();
+  var el = document.getElementById('ar-screen');
+  var pct = Math.round((s.correct / s.questions.length) * 100);
+  var msg = pct === 100 ? 'Perfect run.' : pct >= 70 ? 'Solid session.' : 'Good effort — worth another go.';
+  var html = '<div class="ar-fade" style="text-align:center; padding:20px 0;">';
+  html += '<div style="font-size:13px; color:'+subj.color+'; font-weight:600; margin-bottom:6px;">'+subj.name+'</div>';
+  html += '<div style="font-family:\'Fredoka\',sans-serif; font-size:24px; font-weight:600; margin-bottom:4px;">'+msg+'</div>';
+  html += '<div style="font-size:14px; color:#B8B4CC; margin-bottom:24px;">'+s.correct+' / '+s.questions.length+' correct &middot; +'+(s.correct*10)+' XP</div>';
+  html += '<div style="display:flex; justify-content:center; gap:24px; margin-bottom:28px;">';
+  html += '<div><div style="font-size:20px; font-weight:600; color:#FFB627;">'+state.xp+'</div><div style="font-size:11px; color:#9C97B4;">total XP</div></div>';
+  html += '<div><div style="font-size:20px; font-weight:600; color:#FF7A59;">'+state.streak+'</div><div style="font-size:11px; color:#9C97B4;">day streak</div></div>';
+  html += '<div><div style="font-size:20px; font-weight:600;">'+p.best+'</div><div style="font-size:11px; color:#9C97B4;">best run</div></div>';
+  html += '</div>';
+  html += '<button class="ar-btn" id="ar-again" style="background:'+subj.color+'; color:#14121F; font-weight:600; border-radius:14px; padding:13px 24px; font-size:14px; margin-right:10px;">Go again</button>';
+  html += '<button class="ar-btn" id="ar-home" style="background:none; border:1.5px solid #2E2A45; color:#F1EFE8; border-radius:14px; padding:13px 24px; font-size:14px;">Subjects</button>';
+  html += '</div>';
+  el.innerHTML = html;
+  document.getElementById('ar-again').addEventListener('click', function(){ startSession(subj.id); });
+  document.getElementById('ar-home').addEventListener('click', function(){ session=null; renderHome(); });
+}
+
+loadState(function(){
+  updateHeader();
+  renderHome();
+});
+
+})();
+</script>
+
+</body>
+</html>
