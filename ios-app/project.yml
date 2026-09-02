@@ -8,7 +8,6 @@ targets:
     deploymentTarget: "15.0"
     sources:
       - path: Sources
-    resources:
       - path: Resources
     settings:
       base:
